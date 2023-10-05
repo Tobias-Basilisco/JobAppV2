@@ -7,9 +7,9 @@ import styles from './popularjobcard.style'
 
 const PopularJobCard = ({ item, selectedJob, handleCardPress }) => {
   // console.log(item.job_title);
-  useEffect(() => {
-    console.log(item);
-  }, [item]);
+  // useEffect(() => {
+  //   console.log(item);
+  // }, [item]);
 
   return (
     <TouchableOpacity
