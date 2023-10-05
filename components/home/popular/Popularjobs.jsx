@@ -16,15 +16,13 @@ const Popularjobs = () => {
       query:'React developer',
       num_pages: 1
     }
-    );
-  // const [item, setItem] = useState(null);
+  );
+  
+  const [selectedJob, setSelectedJob] = useState();
 
-  // useEffect(() => {
-  //   if (data) {
-  //     setItem(data);
-  //   }
-  // }, [data]);
+  const handleCardPress = (item) => {
 
+  }
   
   return (
     <View style={styles.container}>
