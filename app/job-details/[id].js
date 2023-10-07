@@ -2,11 +2,15 @@ import React, { useState } from "react";
 import { Text, View, SafeAreaView, ScrollView, ActivityIndicator, RefreshControl } from "react-native";
 import { StackActions, useNavigation, useRoute } from "@react-navigation/native"; // Import from @react-navigation/native
 
-import { Company, JobTabs, ScreenHeaderBtn } from "../../components";
+import { Company, JobTabs, ScreenHeaderBtn, Specifics } from "../../components";
 import { COLORS, SIZES, icons } from "../../constants";
 import useFetch from "../../hook/useFetch";
 
+
+
 const JobDetails = () => {
+    const tabs = ["About", "Qualifications", "Responsabilities"];
+    const [activeTab, setActiveTab] = useState(tabs[0]);
   const route = useRoute(); // Use useRoute from @react-navigation/native
   const navigation = useNavigation(); // Use useNavigation to navigate back
 
@@ -25,10 +29,29 @@ const JobDetails = () => {
   const onRefresh = () => {
     // Implement your refresh logic here
   };
+  const displayTabContent = () => {
+      switch (activeTab) {
+          case 'Qualifications':
+            return (
+                <Specifics 
+                    title= "Qualifications"
+                    points = {data[0].job_highlights?.qualifications ?? ['N/A']}
+                />
+            )
+            break;
+          case 'About':
+
+            break;
+          case 'Responsibilities':
+
+            break;
+          
+      }
+  }
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
-      <ScrollView showsVerticalScrollIndicator={false} refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}>
+      <View showsVerticalScrollIndicator={false} refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}>
         {isLoading ? (
           <ActivityIndicator size="large" color={COLORS.primary} />
         ) : error ? (
@@ -44,10 +67,16 @@ const JobDetails = () => {
               location={data[0].job_country}
             />
 
-            <JobTabs />
+            <JobTabs 
+                tabs = {tabs}
+                activeTab = {activeTab}
+                setActiveTab = {setActiveTab}
+            />
+
+            {displayTabContent()}
           </View>
         )}
-      </ScrollView>
+      </View>
     </SafeAreaView>
   );
 };
