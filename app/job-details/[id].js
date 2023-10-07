@@ -5,6 +5,7 @@ import { StackActions, useNavigation, useRoute } from "@react-navigation/native"
 import { Company, JobTabs, ScreenHeaderBtn, Specifics, JobAbout, JobFooter } from "../../components";
 import { COLORS, SIZES, icons } from "../../constants";
 import useFetch from "../../hook/useFetch";
+import { Stack, useRouter } from "expo-router";
 
 
 
@@ -12,6 +13,7 @@ const JobDetails = () => {
     const tabs = ["About", "Qualifications", "Responsibilities"];
     const [activeTab, setActiveTab] = useState(tabs[0]);
   const route = useRoute(); // Use useRoute from @react-navigation/native
+  const router = useRouter();
   const navigation = useNavigation(); // Use useNavigation to navigate back
 
   const id = route.params.id.slice(1, -1); // Remove the first and last character (square brackets)
@@ -56,6 +58,24 @@ const JobDetails = () => {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
+      <Stack.Screen
+        options={{
+          headerStyle: { backgroundColor: COLORS.lightWhite },
+          headerShadowVisible: false,
+          headerBackVisible: false,
+          headerLeft: () => (
+            <ScreenHeaderBtn
+              iconUrl={icons.left}
+              dimension='60%'
+              handlePress={() => router.back()}
+            />
+          ),
+          headerRight: () => (
+            <ScreenHeaderBtn iconUrl={icons.share} dimension='60%' />
+          ),
+          headerTitle: "",
+        }}
+      />
       <ScrollView showsVerticalScrollIndicator={false} refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}>
         {isLoading ? (
           <ActivityIndicator size="large" color={COLORS.primary} />
