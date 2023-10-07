@@ -14,11 +14,11 @@ const JobDetails = () => {
 
   const { data, isLoading, error, refetch } = useFetch('job-details', { job_id: id }); // Access the id parameter from route.params
 
-// console.log("Data:", data);
+// console.log("Data0:", data[0].job_title);
 // console.log("Is Loading:", isLoading);
 // console.log("Error:", error);
 // console.log('id:', route.params.id[0]);
-console.log('id:', id);
+// console.log('id:', id);
 
 
   const [refreshing, setRefreshing] = useState(false);
@@ -39,7 +39,7 @@ console.log('id:', id);
           <View style={{ padding: SIZES.medium, paddingBottom: 100 }}>
             <Company
               companyLogo={data[0].employer_logo}
-              jobtitle={data[0].job_title}
+              jobTitle={data[0].job_title}
               companyName={data[0].employer_name}
               location={data[0].job_country}
             />
