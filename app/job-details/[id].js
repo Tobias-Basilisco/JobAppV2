@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Text, View, SafeAreaView, ScrollView, ActivityIndicator, RefreshControl } from "react-native";
 import { StackActions, useNavigation, useRoute } from "@react-navigation/native"; // Import from @react-navigation/native
 
-import { Company, JobTabs, ScreenHeaderBtn, Specifics, JobAbout } from "../../components";
+import { Company, JobTabs, ScreenHeaderBtn, Specifics, JobAbout, JobFooter } from "../../components";
 import { COLORS, SIZES, icons } from "../../constants";
 import useFetch from "../../hook/useFetch";
 
@@ -82,6 +82,9 @@ const JobDetails = () => {
           </View>
         )}
       </ScrollView>
+      <JobFooter 
+         url={data[0]?.job_google_link ?? 'https://careers.google.com/jobs/results'}
+      />
     </SafeAreaView>
   );
 };
