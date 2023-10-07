@@ -9,7 +9,7 @@ import useFetch from "../../hook/useFetch";
 
 
 const JobDetails = () => {
-    const tabs = ["About", "Qualifications", "Responsabilities"];
+    const tabs = ["About", "Qualifications", "Responsibilities"];
     const [activeTab, setActiveTab] = useState(tabs[0]);
   const route = useRoute(); // Use useRoute from @react-navigation/native
   const navigation = useNavigation(); // Use useNavigation to navigate back
@@ -44,12 +44,13 @@ const JobDetails = () => {
                     info= {data[0].job_description ?? 'N/A'}
                 />
             )
-
-            break;
           case 'Responsibilities':
-
-            break;
-          
+            return (
+                <Specifics
+                    title= "Qualifications"
+                    points = {data[0].job_highlights?.Responsibilities ?? ['N/A']}
+                />
+            )          
       }
   }
 
