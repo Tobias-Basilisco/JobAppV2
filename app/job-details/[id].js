@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Text, View, SafeAreaView, ScrollView, ActivityIndicator, RefreshControl } from "react-native";
 import { StackActions, useNavigation, useRoute } from "@react-navigation/native"; // Import from @react-navigation/native
 
-import { Company, JobTabs, ScreenHeaderBtn, Specifics } from "../../components";
+import { Company, JobTabs, ScreenHeaderBtn, Specifics, JobAbout } from "../../components";
 import { COLORS, SIZES, icons } from "../../constants";
 import useFetch from "../../hook/useFetch";
 
@@ -38,8 +38,12 @@ const JobDetails = () => {
                     points = {data[0].job_highlights?.Qualifications ?? ['N/A']}
                 />
             )
-            break;
           case 'About':
+            return (
+                <JobAbout
+                    info= {data[0].job_description ?? 'N/A'}
+                />
+            )
 
             break;
           case 'Responsibilities':
