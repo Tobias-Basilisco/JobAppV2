@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: COLORS.tertiary
+        backgroundColor: COLORS.viola
     },
     paginationImage: {
         width: '60%',

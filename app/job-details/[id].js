@@ -60,7 +60,7 @@ const JobDetails = () => {
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
       <Stack.Screen
         options={{
-          headerStyle: { backgroundColor: COLORS.lightWhite },
+          headerStyle: { backgroundColor: COLORS.viola },
           headerShadowVisible: false,
           headerBackVisible: false,
           headerLeft: () => (
