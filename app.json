@@ -7,7 +7,20 @@
     "plugins": [
       "expo-router"
     ],
-    "name": "JobAppV2",
-    "slug": "JobAppV2"
+    "name": "JobApp",
+    "slug": "JobAppV2",
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "6421ebed-4f02-4b4b-be3c-a50b5bccc423"
+      }
+    },
+    "owner": "tobias.basilisco",
+    "icon": "./icon.png",
+    "android": {
+      "package": "com.tobias.basilisco.JobApp"
+    }
   }
 }
